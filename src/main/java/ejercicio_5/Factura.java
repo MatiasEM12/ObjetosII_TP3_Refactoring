@@ -1,4 +1,8 @@
 package ejercicio_5;
 
-public class Factura {
+
+
+import java.util.List;
+
+public record Factura(String nombreCliente, List<Actuacion> actuaciones) {
 }

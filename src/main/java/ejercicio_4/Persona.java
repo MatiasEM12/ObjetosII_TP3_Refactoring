@@ -1,4 +1,7 @@
 package ejercicio_4;
 
-public class Persona {
+
+
+public record Persona(String nombre, String apellido) {
+
 }

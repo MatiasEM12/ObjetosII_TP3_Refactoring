@@ -1,4 +1,6 @@
 package ejercicio_5;
 
-public class Actuacion {
+
+
+public record Actuacion(String nombreEvento, int numberoEspectadores) {
 }
