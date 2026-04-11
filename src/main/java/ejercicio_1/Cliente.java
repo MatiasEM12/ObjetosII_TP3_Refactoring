@@ -4,6 +4,7 @@ package ejercicio_1;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class Cliente {
     private List<Alquiler> alquileres = new ArrayList<Alquiler>();
     private String name;
@@ -19,16 +20,16 @@ public class Cliente {
         for (Alquiler alquiler : alquileres) {
             double monto = 0;
 // determine amounts for each line
-            switch (alquiler.copia().libro().codigoPrecio()) {
-                case Libro.REGULARES:
+            switch (alquiler.copia().libro().tipoPrecio()) {
+                case "REGULARES":
                     monto += 2;
                     if (alquiler.diasAlquilados() > 2)
                         monto += (alquiler.diasAlquilados() - 2) * 1.5;
                     break;
-                case Libro.NUEVO_LANZAMIENTO:
+                case "NUEVO_LANZAMIENTO":
                     monto += alquiler.diasAlquilados() * 3;
                     break;
-                case Libro.INFANTILES:
+                case "INFANTILES":
                     monto += 1.5;
                     if (alquiler.diasAlquilados() > 3)
                         monto += (alquiler.diasAlquilados() - 3) * 1.5;
@@ -38,7 +39,8 @@ public class Cliente {
             // sumo puntos por alquiler
             puntosAlquilerFrecuente++;
             // bonus por dos días de alquiler de un nuevo lanzamiento
-            if ((alquiler.copia().libro().codigoPrecio() == Libro.NUEVO_LANZAMIENTO)
+            var tipoPrecio = CodigoPrecio.NUEVO_LANZAMIENTO;
+            if ((alquiler.copia().libro().codigoPrecio() == tipoPrecio.getValue())
                     && alquiler.diasAlquilados() > 1) {
                 puntosAlquilerFrecuente++;
             }

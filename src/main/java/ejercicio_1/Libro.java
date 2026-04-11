@@ -2,23 +2,37 @@ package ejercicio_1;
 
 
 
-public class Libro {
-    public static final int INFANTILES = 2;
-    public static final int REGULARES = 0;
-    public static final int NUEVO_LANZAMIENTO = 1;
-    private String nombre;
-    private int codigoPrecio;
+public abstract  class Libro {
 
-    public Libro(String nombre, int priceCode) {
+    private String nombre;
+    private CodigoPrecio codigoPrecio;
+
+    protected  Libro(String nombre, CodigoPrecio priceCode) {
         this.nombre = nombre;
         this.codigoPrecio = priceCode;
     }
 
     public int codigoPrecio() {
-        return codigoPrecio;
+        return codigoPrecio.getValue();
+    }
+
+    public String tipoPrecio(){
+        return codigoPrecio.name();
     }
 
     public String nombre() {
         return nombre;
     }
+
+    //validaciones
+    private void validarNombre(String nombre){
+        if(nombre==null) new IllegalArgumentException("El nombre del libro no puede ser nulo.");
+        if(nombre.trim().isEmpty()) new IllegalArgumentException("El nombre del libro no puede estar vacío.");
+
+    }
+
+    private void validarCodigoPrecio(CodigoPrecio priceCode){
+        if(priceCode == null) new IllegalArgumentException("El código de precio no puede ser nulo.");
+    }
+
 }

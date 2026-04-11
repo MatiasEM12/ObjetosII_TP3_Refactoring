@@ -4,8 +4,8 @@ package ejercicio_1;
 
 public class Main {
     public static void main(String args[]) {
-        Libro elTunel = new Libro("El Túnel", Libro.REGULARES);
-        Libro antesDelFin = new Libro("Antes del Fin", Libro.REGULARES);
+        Libro elTunel = new LibroRegular("El Túnel");
+        Libro antesDelFin = new LibroRegular("Antes del Fin");
         CopiaLibro elTunelCopia = new CopiaLibro(elTunel);
         CopiaLibro antesDelFinCopia = new CopiaLibro(antesDelFin);
         Alquiler alquilerElTunel = new Alquiler(elTunelCopia, 5);

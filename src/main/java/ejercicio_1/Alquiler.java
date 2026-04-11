@@ -6,6 +6,9 @@ public class Alquiler {
     private int diasAlquilados;
 
     public Alquiler(CopiaLibro copia, int diasAlquilados) {
+        validarCopia(copia);
+        validarDiasAlquilados(diasAlquilados);
+
         this.copia = copia;
         this.diasAlquilados = diasAlquilados;
     }
@@ -16,5 +19,26 @@ public class Alquiler {
 
     public CopiaLibro copia() {
         return this.copia;
+    }
+
+    public int calcularMonto(){
+
+        return 0;
+    }
+
+
+
+    //validaciones
+
+    private void validarCopia(CopiaLibro copia) {
+        if (copia == null) {
+            throw new IllegalArgumentException("La copia del libro no puede ser nula.");
+        }
+    }
+
+    private void validarDiasAlquilados(int diasAlquilados){
+        if(diasAlquilados <= 0){
+            throw new IllegalArgumentException("Los días alquilados deben ser mayores a cero.");
+        }
     }
 }
