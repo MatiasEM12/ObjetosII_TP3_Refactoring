@@ -5,16 +5,8 @@ package ejercicio_3;
 import java.time.LocalDate;
 import java.util.List;
 
-enum TipoDeGasto {
-    CENA, DESAYUNO, ALQUILER_AUTO
-}
-
-class Gasto {
-    TipoDeGasto tipoGasto;
-    int monto;
-}
-
 public class ReporteDeGastos {
+
     public void imprimir(List<Gasto> gastos) {
         int total = 0;
         int gastosDeComida = 0;
@@ -22,12 +14,23 @@ public class ReporteDeGastos {
         System.out.println("Expenses " + LocalDate.now());
 
         for (Gasto gasto : gastos) {
-            if (gasto.tipoGasto == TipoDeGasto.CENA || gasto.tipoGasto == TipoDeGasto.DESAYUNO) {
-                gastosDeComida += gasto.monto;
+
+
+            /*
+            * if(gasto.esTipo(criterio)){
+            *
+            *   gasto.sumateA(gastoComida);
+            *
+            * }
+            *
+            * */
+            if (gasto.tipoGasto() == TipoDeGasto.CENA || gasto.tipoGasto() == TipoDeGasto.DESAYUNO) {
+                gastosDeComida += gasto.monto();
             }
 
+            //esto ya lo hace el constructor de gasto
             String nombreGasto = "";
-            switch (gasto.tipoGasto) {
+            switch (gasto.tipoGasto()) {
                 case CENA:
                     nombreGasto = "Cena";
                     break;
@@ -39,12 +42,15 @@ public class ReporteDeGastos {
                     break;
             }
 
-            String marcaExcesoComidas = gasto.tipoGasto == TipoDeGasto.CENA && gasto.monto > 5000
-                    || gasto.tipoGasto == TipoDeGasto.DESAYUNO && gasto.monto > 1000 ? "X" : " ";
+            /*
+            *   String marcaExcesoComidas = if(gasto.esExceso)? "X" : " ";
+            * */
+            String marcaExcesoComidas = gasto.tipoGasto() == TipoDeGasto.CENA && gasto.monto() > 5000
+                    || gasto.tipoGasto() == TipoDeGasto.DESAYUNO && gasto.monto() > 1000 ? "X" : " ";
 
-            System.out.println(nombreGasto + "\t" + gasto.monto + "\t" + marcaExcesoComidas);
+            System.out.println(nombreGasto + "\t" + gasto.monto() + "\t" + marcaExcesoComidas);
 
-            total += gasto.monto;
+            total += gasto.monto();
         }
 
         System.out.println("Gastos de comida: " + gastosDeComida);
