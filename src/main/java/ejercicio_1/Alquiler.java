@@ -27,20 +27,12 @@ public class Alquiler {
     }
 
 
-
-    public int obtenerBonusNuevoLanzamiento(){
-        return this.copia.obtenerBonus(this.diasAlquilados);
+    public int obtenerBonus(CodigoPrecio criterio){
+        if(this.copia.esCodigoPrecio(criterio)){
+            return this.copia.obtenerBonus(this.diasAlquilados);
+        }
+        return 0;
     }
-    public int obtenerBonusRegular(){
-        return this.copia.obtenerBonus(this.diasAlquilados);
-    }
-
-    public int obtenerBonusInfantil(){
-        return this.copia.obtenerBonus(this.diasAlquilados);
-    }
-
-
-
 
     //validaciones
 

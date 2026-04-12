@@ -17,12 +17,15 @@ public abstract  class Libro {
         return codigoPrecio.getValue();
     }
 
-    public String tipoPrecio(){
-        return codigoPrecio.name();
-    }
-
     public String nombre() {
         return nombre;
+    }
+
+    public boolean esCodigoPrecio(CodigoPrecio criterio){
+        if(codigoPrecio.equals(criterio)){
+            return true;
+        }
+        return false;
     }
 
     abstract public double calcularPrecio(int diasAlquilados);

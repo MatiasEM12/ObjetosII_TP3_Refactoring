@@ -13,7 +13,11 @@ public class CopiaLibro {
     public Libro libro() {
         return libro;
     }
+    public boolean esCodigoPrecio(CodigoPrecio criterio){
 
+        return this.libro.esCodigoPrecio(criterio);
+
+    }
     //validaciones
     private void validarLibro(Libro libro){
         if(libro == null) new IllegalArgumentException("El libro no puede ser nulo.");
@@ -27,4 +31,6 @@ public class CopiaLibro {
         return this.libro.bonus(diasAlquilados);
 
     }
+
+
 }
