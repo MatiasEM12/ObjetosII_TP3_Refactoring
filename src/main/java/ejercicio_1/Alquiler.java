@@ -26,6 +26,8 @@ public class Alquiler {
         return this.copia.calcular(this.diasAlquilados);
     }
 
+
+
     public int obtenerBonusNuevoLanzamiento(){
         return this.copia.obtenerBonus(this.diasAlquilados);
     }
