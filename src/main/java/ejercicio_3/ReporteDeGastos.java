@@ -5,8 +5,12 @@ package ejercicio_3;
 import java.time.LocalDate;
 import java.util.List;
 
-public class ReporteDeGastos {
+public class ReporteDeGastos implements Reporte{
 
+    public ReporteDeGastos(){}
+
+
+    @Override
     public void imprimir(List<Gasto> gastos) {
         int total = 0;
         int gastosDeComida = 0;
@@ -15,45 +19,42 @@ public class ReporteDeGastos {
 
         for (Gasto gasto : gastos) {
 
+            sumarComida(gasto, TipoDeGasto.CENA, gastosDeComida);
+            sumarComida(gasto, TipoDeGasto.DESAYUNO, gastosDeComida);
 
-            /*
-            * if(gasto.esTipo(criterio)){
-            *
-            *   gasto.sumateA(gastoComida);
-            *
-            * }
-            *
-            * */
-            if (gasto.tipoGasto() == TipoDeGasto.CENA || gasto.tipoGasto() == TipoDeGasto.DESAYUNO) {
-                gastosDeComida += gasto.monto();
-            }
 
-            //esto ya lo hace el constructor de gasto
-            String nombreGasto = "";
-            switch (gasto.tipoGasto()) {
-                case CENA:
-                    nombreGasto = "Cena";
-                    break;
-                case DESAYUNO:
-                    nombreGasto = "Desayuno";
-                    break;
-                case ALQUILER_AUTO:
-                    nombreGasto = "Alquiler de Autos";
-                    break;
-            }
+            String marcaExcesoComidas = stringExceso(gasto);
 
-            /*
-            *   String marcaExcesoComidas = if(gasto.esExceso)? "X" : " ";
-            * */
-            String marcaExcesoComidas = gasto.tipoGasto() == TipoDeGasto.CENA && gasto.monto() > 5000
-                    || gasto.tipoGasto() == TipoDeGasto.DESAYUNO && gasto.monto() > 1000 ? "X" : " ";
+            imprimirDetallesGasto(gasto, marcaExcesoComidas);
 
-            System.out.println(nombreGasto + "\t" + gasto.monto() + "\t" + marcaExcesoComidas);
-
-            total += gasto.monto();
+            gasto.sumateA(total);
         }
 
         System.out.println("Gastos de comida: " + gastosDeComida);
         System.out.println("Total de gastos: " + total);
+    }
+
+    private static void imprimirDetallesGasto(Gasto gasto, String marcaExcesoComidas) {
+        System.out.println(gasto.descripcionGasto() + "\t" + gasto.monto() + "\t" + marcaExcesoComidas);
+    }
+
+    private static String stringExceso(Gasto gasto) {
+        String marcaExcesoComidas = esExceso(TipoDeGasto.CENA, 5000, gasto)
+                || esExceso(TipoDeGasto.DESAYUNO, 1000, gasto) ? "X" : " ";
+        return marcaExcesoComidas;
+    }
+
+    private static void sumarComida(Gasto gasto, TipoDeGasto criterio, int gastosDeComida) {
+        if (gasto.esTipo(criterio)) {
+            gasto.sumateA(gastosDeComida);
+        }
+    }
+
+
+    private static  boolean esExceso(TipoDeGasto criterio,int limite,Gasto gasto ) {
+        if( gasto.esTipo(criterio)|| gasto.esExceso(limite)){
+            return true;
+        }
+        return false;
     }
 }

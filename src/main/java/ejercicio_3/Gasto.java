@@ -15,9 +15,24 @@ public class Gasto {
         return this.tipoGasto;
     }
 
+    public String descripcionGasto(){
+        return this.tipoGasto.getDescripcion();
+    }
+
     public int monto(){
         return this.monto;
     }
 
+    public int sumateA(int sumate){
+        return sumate=+ this.monto;
+    }
+
+    public boolean esTipo(TipoDeGasto criterio) {
+        return this.tipoGasto.equals(criterio);
+    }
+
+    public boolean esExceso(int limite) {
+        return this.monto > limite;
+    }
 
 }
