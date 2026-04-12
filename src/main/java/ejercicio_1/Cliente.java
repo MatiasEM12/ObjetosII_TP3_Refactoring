@@ -23,7 +23,7 @@ public class Cliente {
             total += alquiler.calcularMonto();
 
             // sumo puntos por alquiler
-            puntosAlquilerFrecuente=+1 + alquiler.obtenerBonus(CodigoPrecio.NUEVO_LANZAMIENTO);
+            puntosAlquilerFrecuente=1 + alquiler.obtenerBonus(CodigoPrecio.NUEVO_LANZAMIENTO);
 
 
         }

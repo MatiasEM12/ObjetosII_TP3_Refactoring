@@ -9,6 +9,8 @@ public abstract  class Libro {
     private CodigoPrecio codigoPrecio;
 
     protected  Libro(String nombre, CodigoPrecio priceCode) {
+        validarNombre(nombre);
+        validarCodigoPrecio(priceCode);
         this.nombre = nombre;
         this.codigoPrecio = priceCode;
     }
