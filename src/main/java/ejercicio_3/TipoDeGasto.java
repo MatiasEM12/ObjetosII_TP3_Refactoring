@@ -13,4 +13,6 @@ enum TipoDeGasto {
     public String getDescripcion() {
         return descripcion;
     }
+
+
 }

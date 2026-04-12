@@ -19,15 +19,15 @@ public class ReporteDeGastos implements Reporte{
 
         for (Gasto gasto : gastos) {
 
-            sumarComida(gasto, TipoDeGasto.CENA, gastosDeComida);
-            sumarComida(gasto, TipoDeGasto.DESAYUNO, gastosDeComida);
+            gastosDeComida=sumarComida(gasto, TipoDeGasto.CENA, gastosDeComida);
+            gastosDeComida=sumarComida(gasto, TipoDeGasto.DESAYUNO, gastosDeComida);
 
 
             String marcaExcesoComidas = stringExceso(gasto);
 
             imprimirDetallesGasto(gasto, marcaExcesoComidas);
 
-            gasto.sumateA(total);
+            total=gasto.sumateA(total);
         }
 
         System.out.println("Gastos de comida: " + gastosDeComida);
@@ -44,12 +44,13 @@ public class ReporteDeGastos implements Reporte{
         return marcaExcesoComidas;
     }
 
-    private static void sumarComida(Gasto gasto, TipoDeGasto criterio, int gastosDeComida) {
+    private static int sumarComida(Gasto gasto, TipoDeGasto criterio, int gastosDeComida) {
         if (gasto.esTipo(criterio)) {
-            gasto.sumateA(gastosDeComida);
+            gastosDeComida=gasto.sumateA(gastosDeComida);
         }
-    }
+        return gastosDeComida;
 
+    }
 
     private static  boolean esExceso(TipoDeGasto criterio,int limite,Gasto gasto ) {
         if( gasto.esTipo(criterio)|| gasto.esExceso(limite)){

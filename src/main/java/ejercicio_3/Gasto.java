@@ -28,7 +28,7 @@ public class Gasto {
     }
 
     public boolean esTipo(TipoDeGasto criterio) {
-        return this.tipoGasto.equals(criterio);
+        return this.tipoGasto==criterio;
     }
 
     public boolean esExceso(int limite) {
