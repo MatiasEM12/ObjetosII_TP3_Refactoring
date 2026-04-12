@@ -11,33 +11,6 @@ import java.util.List;
 import java.util.Map;
 
 public class Recaudacion {
-    private static final Map<String, Integer> COLUMNAS = new HashMap<>();
-    static {
-        COLUMNAS.put("permalink", 0);
-        COLUMNAS.put("company_name", 1);
-        COLUMNAS.put("number_employees", 2);
-        COLUMNAS.put("category", 3);
-        COLUMNAS.put("city", 4);
-        COLUMNAS.put("state", 5);
-        COLUMNAS.put("funded_date", 6);
-        COLUMNAS.put("raised_amount", 7);
-        COLUMNAS.put("raised_currency", 8);
-        COLUMNAS.put("round", 9);
-    }
-
-    public static List<Map<String, String>> where(Map<String, String> options)
-            throws IOException {
-
-        List<String[]> csvData = leerCSV();
-
-        List<String[]> filtrado = filtrar(csvData, options);
-
-        return mapearResultado(filtrado);
-    }
-
-    //leer
-
-
     public static List<Map<String, String>> where(Map<String, String> options)
 
 
