@@ -23,7 +23,7 @@ public abstract  class Libro {
         return nombre;
     }
 
-    public boolean esCodigoPrecio(CodigoPrecio criterio){
+    public boolean tieneCodigoPrecio(CodigoPrecio criterio){
         if(codigoPrecio.equals(criterio)){
             return true;
         }

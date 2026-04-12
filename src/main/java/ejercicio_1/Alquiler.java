@@ -28,7 +28,7 @@ public class Alquiler {
 
 
     public int obtenerBonus(CodigoPrecio criterio){
-        if(this.copia.esCodigoPrecio(criterio)){
+        if(this.copia.tieneCodigoPrecio(criterio)){
             return this.copia.obtenerBonus(this.diasAlquilados);
         }
         return 0;

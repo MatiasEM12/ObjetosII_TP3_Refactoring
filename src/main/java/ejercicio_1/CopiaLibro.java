@@ -13,9 +13,9 @@ public class CopiaLibro {
     public Libro libro() {
         return libro;
     }
-    public boolean esCodigoPrecio(CodigoPrecio criterio){
+    public boolean tieneCodigoPrecio(CodigoPrecio criterio){
 
-        return this.libro.esCodigoPrecio(criterio);
+        return this.libro.tieneCodigoPrecio(criterio);
 
     }
     //validaciones
