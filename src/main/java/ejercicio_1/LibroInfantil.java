@@ -2,8 +2,24 @@ package ejercicio_1;
 
 public class LibroInfantil extends Libro{
 
-    protected LibroInfantil(String nombre) {
+    private static double MONTO=1.5;
+    private static int MIN_DIAS=3;
+
+    public LibroInfantil(String nombre) {
         super(nombre, CodigoPrecio.INFANTILES);
     }
 
+    @Override
+    public double calcularPrecio(int diasAlquilados) {
+        double precio=MONTO;
+        if (diasAlquilados > MIN_DIAS){
+            precio += (diasAlquilados - MIN_DIAS) * MONTO;
+        }
+        return precio;
+    }
+
+    @Override
+    public int bonus(int diasAlquilados) {
+        return 0;
+    }
 }

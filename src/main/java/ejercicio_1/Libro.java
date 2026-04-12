@@ -4,6 +4,7 @@ package ejercicio_1;
 
 public abstract  class Libro {
 
+
     private String nombre;
     private CodigoPrecio codigoPrecio;
 
@@ -23,6 +24,10 @@ public abstract  class Libro {
     public String nombre() {
         return nombre;
     }
+
+    abstract public double calcularPrecio(int diasAlquilados);
+
+    abstract public int bonus(int diasAlquilados);
 
     //validaciones
     private void validarNombre(String nombre){

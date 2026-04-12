@@ -18,4 +18,13 @@ public class CopiaLibro {
     private void validarLibro(Libro libro){
         if(libro == null) new IllegalArgumentException("El libro no puede ser nulo.");
     }
+
+    public double calcular(int diasAlquilados) {
+        return this.libro.calcularPrecio(diasAlquilados);
+    }
+
+    public int obtenerBonus(int diasAlquilados) {
+        return this.libro.bonus(diasAlquilados);
+
+    }
 }

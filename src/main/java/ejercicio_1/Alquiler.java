@@ -21,10 +21,22 @@ public class Alquiler {
         return this.copia;
     }
 
-    public int calcularMonto(){
+    public double calcularMonto(){
 
-        return 0;
+        return this.copia.calcular(this.diasAlquilados);
     }
+
+    public int obtenerBonusNuevoLanzamiento(){
+        return this.copia.obtenerBonus(this.diasAlquilados);
+    }
+    public int obtenerBonusRegular(){
+        return this.copia.obtenerBonus(this.diasAlquilados);
+    }
+
+    public int obtenerBonusInfantil(){
+        return this.copia.obtenerBonus(this.diasAlquilados);
+    }
+
 
 
 

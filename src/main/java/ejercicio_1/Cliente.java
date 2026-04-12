@@ -10,6 +10,7 @@ public class Cliente {
     private String name;
 
     public Cliente(String nombre) {
+        validarNombre(nombre);
         this.name = nombre;
     }
 
@@ -18,32 +19,13 @@ public class Cliente {
         double total = 0;
         int puntosAlquilerFrecuente = 0;
         for (Alquiler alquiler : alquileres) {
-            double monto = 0;
-// determine amounts for each line
-            switch (alquiler.copia().libro().tipoPrecio()) {
-                case "REGULARES":
-                    monto += 2;
-                    if (alquiler.diasAlquilados() > 2)
-                        monto += (alquiler.diasAlquilados() - 2) * 1.5;
-                    break;
-                case "NUEVO_LANZAMIENTO":
-                    monto += alquiler.diasAlquilados() * 3;
-                    break;
-                case "INFANTILES":
-                    monto += 1.5;
-                    if (alquiler.diasAlquilados() > 3)
-                        monto += (alquiler.diasAlquilados() - 3) * 1.5;
-                    break;
-            }
-            total += monto;
+            // sumo monto por alquiler
+            total += alquiler.calcularMonto();
+
             // sumo puntos por alquiler
-            puntosAlquilerFrecuente++;
-            // bonus por dos días de alquiler de un nuevo lanzamiento
-            var tipoPrecio = CodigoPrecio.NUEVO_LANZAMIENTO;
-            if ((alquiler.copia().libro().codigoPrecio() == tipoPrecio.getValue())
-                    && alquiler.diasAlquilados() > 1) {
-                puntosAlquilerFrecuente++;
-            }
+            puntosAlquilerFrecuente=+1 + alquiler.obtenerBonusNuevoLanzamiento();
+
+
         }
         resultado[0] = total;
         resultado[1] = puntosAlquilerFrecuente;
@@ -51,6 +33,18 @@ public class Cliente {
     }
 
     public void alquilar(Alquiler rental) {
+        validarAlquiler(rental);
         alquileres.add(rental);
+    }
+
+    //validaciones
+    private void validarNombre(String nombre){
+        if(nombre==null) new IllegalArgumentException("El nombre del cliente no puede ser nulo.");
+        if(nombre.trim().isEmpty()) new IllegalArgumentException("El nombre del cliente no puede estar vacío.");
+
+    }
+
+    private void validarAlquiler(Alquiler alquiler){
+        if(alquiler == null) new IllegalArgumentException("El alquiler no puede ser nulo.");
     }
 }
