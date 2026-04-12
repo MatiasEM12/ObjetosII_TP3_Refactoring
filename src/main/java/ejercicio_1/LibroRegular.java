@@ -12,6 +12,7 @@ public class LibroRegular extends Libro {
 
     @Override
     public double calcularPrecio(int diasAlquilados) {
+        validarDiasAlguilados(diasAlquilados);
         double monto = MONTO;
         if (diasAlquilados > MIN_DIAS){
             monto += (diasAlquilados - MIN_DIAS) * MULTIPLICADOR;
@@ -22,6 +23,12 @@ public class LibroRegular extends Libro {
 
     @Override
     public int bonus(int diasAlquilados) {
+        validarDiasAlguilados(diasAlquilados);
         return 0;
+    }
+
+    //validaciones
+    private void validarDiasAlguilados(int diasAlquilados){
+        if(diasAlquilados <= 0) new IllegalArgumentException("Los días alquilados tienes que ser mayor a 0");
     }
 }
