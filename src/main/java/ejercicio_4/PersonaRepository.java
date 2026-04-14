@@ -54,7 +54,7 @@ public class PersonaRepository {
                     .select("select nombre, apellido from persona where id_persona = ?")
                     .bind(0, id).mapToMap(String.class).list();
 
-            if (rs.size() == 0) {
+            if (rs.isEmpty()) {
                 return Optional.empty();
             }
 
