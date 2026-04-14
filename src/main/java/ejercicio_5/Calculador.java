@@ -37,7 +37,9 @@ public class Calculador {
                     throw new RuntimeException("Tipo de evento no conocido");
             }
             // creditos a ganar
-            creditos += Math.max(actuacion.numberoEspectadores() - 30, 0);
+            creditos = calcularCreditos(actuacion, creditos);
+
+
             // creditos extras para comedia
             if ("Comedia".equals(tipo)) {
                 creditos += Math.floor(actuacion.numberoEspectadores() / 5);
@@ -49,5 +51,10 @@ public class Calculador {
         result += "Créditos ganados: " + creditos + System.lineSeparator();
 
         return result;
+    }
+
+    private static float calcularCreditos(Actuacion actuacion, float creditos) {
+        creditos += Math.max(actuacion.numberoEspectadores() - 30, 0);
+        return creditos;
     }
 }
