@@ -3,20 +3,25 @@ package ejercicio_3;
 
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ReporteDeGastos implements Reporte{
 
-    public ReporteDeGastos(){}
+    private int total;
+    private int gastosDeComida;
+    ArrayList<String> reporte;
+    public ReporteDeGastos(){
+        this.reporte=new ArrayList<>();
+    }
 
 
     @Override
     public void imprimir(List<Gasto> gastos) {
-        int total = 0;
-        int gastosDeComida = 0;
-
-        System.out.println("Expenses " + LocalDate.now());
-
+        this.total = 0;
+        this.gastosDeComida = 0;
+        
+        
         for (Gasto gasto : gastos) {
 
             gastosDeComida=sumarComida(gasto, TipoDeGasto.CENA, gastosDeComida);
@@ -26,12 +31,13 @@ public class ReporteDeGastos implements Reporte{
             String marcaExcesoComidas = stringExceso(gasto);
 
             imprimirDetallesGasto(gasto, marcaExcesoComidas);
-
+            //cargarStringReporte(gasto, marcaExcesoComidas);
             total=gasto.sumateA(total);
         }
+    }
 
-        System.out.println("Gastos de comida: " + gastosDeComida);
-        System.out.println("Total de gastos: " + total);
+    private void cargarStringReporte(Gasto gasto, String marcaExcesoComidas) {
+        reporte.add(gasto.descripcionGasto() + "\t" + gasto.monto() + "\t" + marcaExcesoComidas);
     }
 
     private static void imprimirDetallesGasto(Gasto gasto, String marcaExcesoComidas) {
