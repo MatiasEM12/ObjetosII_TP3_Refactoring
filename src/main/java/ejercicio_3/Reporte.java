@@ -1,8 +1,10 @@
 package ejercicio_3;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public interface Reporte {
 
-    public void imprimir(List<Gasto> gastos);
+
+    public ArrayList<String> generarReporte(List<Gasto> gastos);
 }

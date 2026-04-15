@@ -2,12 +2,14 @@ package ejercicio_3;
 
 
 
-import java.time.LocalDate;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class ReporteDeGastos implements Reporte{
 
+    public static final int LIMITE_CENA = 5000;
+    public static final int LIMITE_DESAYUNO = 1000;
     private int total;
     private int gastosDeComida;
     ArrayList<String> reporte;
@@ -17,7 +19,7 @@ public class ReporteDeGastos implements Reporte{
 
 
     @Override
-    public void imprimir(List<Gasto> gastos) {
+    public ArrayList<String>  generarReporte(List<Gasto> gastos) {
         this.total = 0;
         this.gastosDeComida = 0;
         
@@ -30,23 +32,29 @@ public class ReporteDeGastos implements Reporte{
 
             String marcaExcesoComidas = stringExceso(gasto);
 
-            imprimirDetallesGasto(gasto, marcaExcesoComidas);
-            //cargarStringReporte(gasto, marcaExcesoComidas);
+
+            cargarStringReporte(gasto, marcaExcesoComidas);
             total=gasto.sumateA(total);
         }
+
+        cargarTotales();
+
+        return reporte;
+    }
+
+    private void cargarTotales() {
+        reporte.add("Gastos de comida: " + gastosDeComida);
+        reporte.add("Total de gastos: " + total);
     }
 
     private void cargarStringReporte(Gasto gasto, String marcaExcesoComidas) {
         reporte.add(gasto.descripcionGasto() + "\t" + gasto.monto() + "\t" + marcaExcesoComidas);
     }
 
-    private static void imprimirDetallesGasto(Gasto gasto, String marcaExcesoComidas) {
-        System.out.println(gasto.descripcionGasto() + "\t" + gasto.monto() + "\t" + marcaExcesoComidas);
-    }
 
     private static String stringExceso(Gasto gasto) {
-        String marcaExcesoComidas = esExceso(TipoDeGasto.CENA, 5000, gasto)
-                || esExceso(TipoDeGasto.DESAYUNO, 1000, gasto) ? "X" : " ";
+        String marcaExcesoComidas = esExceso(TipoDeGasto.CENA, LIMITE_CENA, gasto)
+                || esExceso(TipoDeGasto.DESAYUNO, LIMITE_DESAYUNO, gasto) ? "X" : " ";
         return marcaExcesoComidas;
     }
 
