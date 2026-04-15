@@ -14,7 +14,7 @@ public class ReporteTest {
         ArrayList<Gasto> gastos = new ArrayList<>();
         gastos.add(new Gasto(TipoDeGasto.CENA, 6000));
         gastos.add(new Gasto(TipoDeGasto.DESAYUNO, 500));
-       reporte.imprimir(gastos);
+        reporte.generarReporte(gastos);
 
 
     }

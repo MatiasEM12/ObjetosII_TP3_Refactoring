@@ -22,8 +22,14 @@ public class ReporteDeGastos implements Reporte{
     public ArrayList<String>  generarReporte(List<Gasto> gastos) {
         this.total = 0;
         this.gastosDeComida = 0;
-        
-        
+
+        cargarReporte(gastos);
+        cargarTotales();
+
+        return reporte;
+    }
+
+    private void cargarReporte(List<Gasto> gastos) {
         for (Gasto gasto : gastos) {
 
             gastosDeComida=sumarComida(gasto, TipoDeGasto.CENA, gastosDeComida);
@@ -36,10 +42,6 @@ public class ReporteDeGastos implements Reporte{
             cargarStringReporte(gasto, marcaExcesoComidas);
             total=gasto.sumateA(total);
         }
-
-        cargarTotales();
-
-        return reporte;
     }
 
     private void cargarTotales() {
