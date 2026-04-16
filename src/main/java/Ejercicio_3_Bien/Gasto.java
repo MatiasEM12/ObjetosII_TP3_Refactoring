@@ -8,7 +8,7 @@ public interface Gasto {
 
     int sumarComida(int sumate);
 
-    boolean esExceso();
+    boolean esExcesoPorReporteGasto();
 
     String descripcion();
 

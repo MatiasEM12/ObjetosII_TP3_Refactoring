@@ -26,7 +26,7 @@ public class GastoAlquilerDeAuto implements Gasto {
     }
 
     @Override
-    public boolean esExceso() {
+    public boolean esExcesoPorReporteGasto() {
         return false;
     }
     @Override

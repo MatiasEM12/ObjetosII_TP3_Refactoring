@@ -22,7 +22,7 @@ public class GastoCena implements Gasto{
         return this.sumateA(sumate);
     }
     @Override
-    public boolean esExceso() {
+    public boolean esExcesoPorReporteGasto() {
         return this.monto > ReporteDeGastos.LIMITE_CENA;
     }
     @Override

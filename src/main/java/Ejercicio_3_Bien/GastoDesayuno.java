@@ -23,7 +23,7 @@ public class GastoDesayuno  implements Gasto{
     }
 
     @Override
-    public boolean esExceso() {
+    public boolean esExcesoPorReporteGasto() {
         return this.monto > ReporteDeGastos.LIMITE_DESAYUNO;
     }
     @Override
