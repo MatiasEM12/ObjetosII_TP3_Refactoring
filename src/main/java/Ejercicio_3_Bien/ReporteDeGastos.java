@@ -36,7 +36,7 @@ public class ReporteDeGastos implements Reporte {
 
 
 
-            String marcaExcesoComidas = gasto.esExceso() ? "X" : " ";
+            String marcaExcesoComidas = gasto.esExcesoPorReporteGasto() ? "X" : " ";
 
 
             cargarStringReporte(gasto, marcaExcesoComidas);
