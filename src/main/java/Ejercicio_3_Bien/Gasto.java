@@ -6,7 +6,11 @@ public interface Gasto {
 
     int sumateA(int sumate);
 
-    int sumarComida();
+    int sumarComida(int sumate);
 
-    boolean esExceso(int limite);
+    boolean esExceso();
+
+    String descripcion();
+
+    int monto();
 }

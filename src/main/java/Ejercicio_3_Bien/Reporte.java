@@ -9,4 +9,5 @@ public interface Reporte {
 
 
     public ArrayList<String> generarReporte(List<Gasto> gastos);
+
 }

@@ -10,6 +10,6 @@ public class EjemploDeUsoDelReporte {
         //g1.tipoGasto = TipoDeGasto.DESAYUNO;
         //g1.monto =1000;
         var reporte = new ReporteDeGastos();
-        reporte.imprimir(List.of(g1));
+        //reporte.imprimir(List.of(g1));
     }
 }
