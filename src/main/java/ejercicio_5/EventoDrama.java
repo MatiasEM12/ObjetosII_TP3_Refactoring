@@ -1,21 +1,35 @@
 package ejercicio_5;
 
-public class EventoDrama extends Evento{
+public class EventoDrama implements Evento{
 
-    public static final int LIMITE_BASE_ESPECTADORES = 30;
-    public static final int MULTIPLICADOR = 1000;
+
     private ValorEvento monto;
+    private String nombreEvento;
+    private String tipo;
+
     protected EventoDrama(String nombreEvento, String tipo, ValorEvento monto) {
-        super(nombreEvento, tipo);
+        this.nombreEvento = nombreEvento;
+        this.tipo = tipo;
         this.monto=monto;
     }
 
     @Override
-    public int calcularMonto(int numberoEspectadores) {
+    public int calcularMontoPorCalculador(int numberoEspectadores) {
         int monto = this.monto.getMonto();
-        if (numberoEspectadores > LIMITE_BASE_ESPECTADORES) {
-            monto += MULTIPLICADOR * (numberoEspectadores - LIMITE_BASE_ESPECTADORES);
+        if (numberoEspectadores > Calculador.LIMITE_BASE_ESPECTADORES_DRAMA) {
+            monto += Calculador.MULTIPLICADOR_DRAMA * (numberoEspectadores - Calculador.LIMITE_BASE_ESPECTADORES_DRAMA);
         }
         return monto;
+    }
+
+
+    @Override
+    public String nombreEvento(){
+        return this.nombreEvento;
+    }
+
+    @Override
+    public String tipo() {
+        return this.tipo;
     }
 }

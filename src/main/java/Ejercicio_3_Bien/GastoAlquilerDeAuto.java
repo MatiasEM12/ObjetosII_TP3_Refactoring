@@ -1,6 +1,6 @@
 package Ejercicio_3_Bien;
 
-import java.security.PrivateKey;
+
 
 public class GastoAlquilerDeAuto implements Gasto {
 
@@ -17,7 +17,7 @@ public class GastoAlquilerDeAuto implements Gasto {
 
     @Override
     public int sumateA(int sumate) {
-        return sumate=+ this.monto;
+        return sumate + this.monto;
     }
 
     @Override
