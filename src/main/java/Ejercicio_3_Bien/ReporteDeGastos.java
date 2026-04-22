@@ -52,7 +52,7 @@ public class ReporteDeGastos implements Reporte {
     private void cargarStringReporte(Gasto gasto, String marcaExcesoComidas) {
         reporte.add(gasto.descripcion() + "\t" + gasto.monto() + "\t" + marcaExcesoComidas);
 
-        //gasto.descripcion() + "\t" + gasto.monto()   , podria ser el toString de gasto? y se evita los .monto y .descripcion
+
     }
 
 }

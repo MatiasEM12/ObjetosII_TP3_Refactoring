@@ -1,16 +1,43 @@
 package Ejercicio_3_Bien;
 
-public interface Gasto {
+public abstract class   Gasto {
+
+    protected  int monto;
+    protected  String descripcion;
 
 
+    protected Gasto(int monto,String descripcion) throws IllegalArgumentException {
 
-    int sumateA(int sumate);
+        validarMonto(monto);
+        validarDescripcion(descripcion);
 
-    int sumarComida(int sumate);
+        this.monto = monto;
+        this.descripcion=descripcion;
+    }
 
-    boolean esExcesoPorReporteGasto();
+    int sumateA(int sumate) {
 
-    String descripcion();
+        return sumate + this.monto;
+    }
 
-    int monto();
+    public abstract int sumarComida(int sumate);
+
+    public abstract boolean esExcesoPorReporteGasto() ;
+
+    String descripcion() {
+        return descripcion;
+    }
+
+    int monto() {
+        return monto;
+    }
+
+    private void validarMonto(int monto) throws IllegalArgumentException {
+        if (monto < 0) throw new IllegalArgumentException("El monto no puede ser negativo");
+    }
+
+    private void validarDescripcion(String descripcion) throws IllegalArgumentException {
+        if(descripcion == null) throw new IllegalArgumentException("La descripcion no puede ser null");
+        if(descripcion.isEmpty()) throw new IllegalArgumentException("La descripcion no puede ser vacia");
+    }
 }

@@ -1,20 +1,11 @@
 package Ejercicio_3_Bien;
 
 
-public class GastoCena implements Gasto{
-
-    private int monto;
-    private String descripcion="Cena";
-    public GastoCena( int monto) {
-
-        this.monto=monto;
+public class GastoCena extends Gasto{
 
 
-    }
-
-    @Override
-    public int sumateA(int sumate) {
-        return sumate + this.monto;
+    public GastoCena(int monto, String descripcion) throws IllegalArgumentException {
+        super(monto, descripcion);
     }
 
     @Override
@@ -25,13 +16,5 @@ public class GastoCena implements Gasto{
     public boolean esExcesoPorReporteGasto() {
         return this.monto > ReporteDeGastos.LIMITE_CENA;
     }
-    @Override
-    public String descripcion(){
-        return this.descripcion;
-    }
 
-    @Override
-    public int monto() {
-        return this.monto;
-    }
 }
