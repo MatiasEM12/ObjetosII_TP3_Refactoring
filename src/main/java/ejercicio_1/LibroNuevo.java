@@ -2,31 +2,30 @@ package ejercicio_1;
 
 public class LibroNuevo extends Libro{
 
-    private static int MULTIPLICADOR=3;
-    private static int MIN_DIAS_BONUS=1;
 
-    public LibroNuevo(String nombre) {
+
+    public LibroNuevo(String nombre) throws IllegalArgumentException {
         super(nombre, CodigoPrecio.NUEVO_LANZAMIENTO);
     }
 
     @Override
-    public double calcularPrecio(int diasAlquilados) {
+    public double calcularPrecio(int diasAlquilados) throws IllegalArgumentException{
         validarDiasAlguilados(diasAlquilados);
 
-        return  diasAlquilados * MULTIPLICADOR;
+        return  diasAlquilados * Cliente.MULTIPLICADOR_NUEVO_LANZAMIENTO;
     }
 
     @Override
-    public int bonus(int diasAlquilados) {
+    public int bonus(int diasAlquilados)  throws IllegalArgumentException{
         validarDiasAlguilados(diasAlquilados);
-        if(diasAlquilados > MIN_DIAS_BONUS){
+        if(diasAlquilados > Cliente.DIAS_NUEVO_LANZAMIENTO){
             return 1;
         }
         return 0;
     }
 
     //validaciones
-    private void validarDiasAlguilados(int diasAlquilados){
-        if(diasAlquilados <= 0) new IllegalArgumentException("Los días alquilados tienes que ser mayor a 0");
+    private void validarDiasAlguilados(int diasAlquilados)throws IllegalArgumentException {
+        if(diasAlquilados <= 0) throw new IllegalArgumentException("Los días alquilados tienes que ser mayor a 0");
     }
 }

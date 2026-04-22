@@ -23,26 +23,21 @@ public abstract  class Libro {
         return nombre;
     }
 
-    public boolean tieneCodigoPrecio(CodigoPrecio criterio){
-        if(codigoPrecio.equals(criterio)){
-            return true;
-        }
-        return false;
-    }
 
-    abstract public double calcularPrecio(int diasAlquilados);
 
-    abstract public int bonus(int diasAlquilados);
+    abstract public double calcularPrecio(int diasAlquilados) throws IllegalArgumentException;
+
+    abstract public int bonus(int diasAlquilados) throws IllegalArgumentException;
 
     //validaciones
-    private void validarNombre(String nombre){
-        if(nombre==null) new IllegalArgumentException("El nombre del libro no puede ser nulo.");
-        if(nombre.trim().isEmpty()) new IllegalArgumentException("El nombre del libro no puede estar vacío.");
+    private void validarNombre(String nombre) throws IllegalArgumentException{
+        if(nombre==null) throw new IllegalArgumentException("El nombre del libro no puede ser nulo.");
+        if(nombre.trim().isEmpty()) throw  new IllegalArgumentException("El nombre del libro no puede estar vacío.");
 
     }
 
-    private void validarCodigoPrecio(CodigoPrecio priceCode){
-        if(priceCode == null) new IllegalArgumentException("El código de precio no puede ser nulo.");
+    private void validarCodigoPrecio(CodigoPrecio priceCode) throws IllegalArgumentException{
+        if(priceCode == null) throw new IllegalArgumentException("El código de precio no puede ser nulo.");
     }
 
 }
