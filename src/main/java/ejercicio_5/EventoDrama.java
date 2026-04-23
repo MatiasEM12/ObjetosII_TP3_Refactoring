@@ -1,35 +1,25 @@
 package ejercicio_5;
 
-public class EventoDrama implements Evento{
+public class EventoDrama extends Evento{
 
 
-    private ValorEvento monto;
-    private String nombreEvento;
-    private String tipo;
-
-    protected EventoDrama(String nombreEvento, String tipo, ValorEvento monto) {
-        this.nombreEvento = nombreEvento;
-        this.tipo = tipo;
-        this.monto=monto;
+    public EventoDrama(String nombreEvento,ValorEvento valorEvento, TiposDeEventos tipoEvento) {
+        super(nombreEvento,valorEvento, tipoEvento);
     }
 
     @Override
-    public int calcularMontoPorCalculador(int numberoEspectadores) {
-        int monto = this.monto.getMonto();
+    public float calcularMontoPorCalculador(int numberoEspectadores) {
+        float monto = this.valorEvento.getMonto();
         if (numberoEspectadores > Calculador.LIMITE_BASE_ESPECTADORES_DRAMA) {
             monto += Calculador.MULTIPLICADOR_DRAMA * (numberoEspectadores - Calculador.LIMITE_BASE_ESPECTADORES_DRAMA);
         }
         return monto;
     }
 
-
     @Override
-    public String nombreEvento(){
-        return this.nombreEvento;
+    public float calcularExtraComedia(int numberoEspectadores) {
+        return 0;
     }
 
-    @Override
-    public String tipo() {
-        return this.tipo;
-    }
+
 }
