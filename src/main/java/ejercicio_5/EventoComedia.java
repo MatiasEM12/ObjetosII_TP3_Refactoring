@@ -9,6 +9,8 @@ public class EventoComedia extends Evento{
 
     @Override
     public float calcularMontoPorCalculador(int numberoEspectadores) {
+
+        validarEspectadores(numberoEspectadores);
         float monto = this.valorEvento.getMonto();
         if (numberoEspectadores > Calculador.LIMITE_BASE_ESPECTADORES_COMEDIA) {
             monto += Calculador.MULTIPLICADOR_SUPERIOR_COMEDIA + Calculador.SUMAR_COMEDIA * (numberoEspectadores - Calculador.LIMITE_BASE_ESPECTADORES_COMEDIA);
@@ -21,8 +23,15 @@ public class EventoComedia extends Evento{
 
     @Override
     public float calcularExtraComedia(int numberoEspectadores) {
-       return (float) Math.floor(numberoEspectadores / 5);
+        validarEspectadores(numberoEspectadores);
+        return (float) Math.floor(numberoEspectadores / 5);
     }
 
+
+    private void validarEspectadores(int espectadores){
+        if(espectadores<0){
+            throw new RuntimeException("Los espectadores deben ser mayor a 0");
+        }
+    }
 
 }

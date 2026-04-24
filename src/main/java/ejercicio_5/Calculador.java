@@ -17,6 +17,8 @@ public class Calculador {
 
     public String reporte(Factura factura, List<Evento> eventos) {
 
+        validadFactura(factura);
+        validarEventos(eventos);
 
         float totalAmount = 0;
         float creditos = 0;
@@ -62,5 +64,18 @@ public class Calculador {
     private static float calcularCreditos(Actuacion actuacion, float creditos) {
         creditos += Math.max(actuacion.numberoEspectadores() - 30, 0);
         return creditos;
+    }
+
+    private void validarEventos(List<Evento> eventos) {
+        if (eventos.isEmpty()) {;
+            throw new RuntimeException("No hay eventos disponibles");
+        }
+
+    }
+
+    private void validadFactura(Factura factura) {
+        if (factura == null) {
+            throw new RuntimeException("Factura no puede ser nula");
+        }
     }
 }
