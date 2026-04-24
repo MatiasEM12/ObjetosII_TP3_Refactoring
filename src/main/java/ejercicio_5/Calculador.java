@@ -42,7 +42,7 @@ public class Calculador {
             result = stringActuacion(actuacion, result, monto);
             totalAmount += monto;
         }
-
+ 
         result = stringResultadoFinal(result, totalAmount, creditos);
 
         return result;
