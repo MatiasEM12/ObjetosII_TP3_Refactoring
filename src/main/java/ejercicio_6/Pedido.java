@@ -24,4 +24,22 @@ public class Pedido {
     public boolean envioPrioritario() {
         return this.envioPrioritario;
     }
+
+    public double totalDescuestoPrioritario(){
+        double total=0;
+        if(this.envioPrioritario) {
+            Calculadora calculadoraPrioritario = new CalculadoraPrioritario();
+            total = calculadoraPrioritario.calcularTotalConDescuento(this);
+        }
+        return total;
+    }
+
+    public double totalDescuentoVIP(){
+        double total=0;
+        if(this.clienteVip) {
+            Calculadora calculadoraVip = new CalculadoraVip();
+            total = calculadoraVip.calcularTotalConDescuento(this);
+        }
+        return total;
+    }
 }

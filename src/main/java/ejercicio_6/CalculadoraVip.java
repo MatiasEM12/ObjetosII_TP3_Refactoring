@@ -4,10 +4,6 @@ public class CalculadoraVip implements Calculadora {
 
     @Override
     public double calcularTotalConDescuento(Pedido pedido) {
-        double descuento = 0;
-        if (pedido.clienteVip()) {
-            descuento = pedido.subtotal() * 0.15;
-        }
-        return pedido.subtotal() - descuento;
+        return pedido.subtotal() - pedido.subtotal() * 0.15;
     }
 }
