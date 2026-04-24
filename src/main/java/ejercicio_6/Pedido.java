@@ -4,8 +4,11 @@ package ejercicio_6;
 public class Pedido {
 
     private double subtotal;
-    private boolean clienteVip;
-    private boolean envioPrioritario;
+    private boolean clienteVip;//por instancia
+    private boolean envioPrioritario;//por instancia
+    public static final double DESCUENTO_VIP = 0.15;
+    public static final double DESCUENTO_PRIORITARIO = 0.05;
+
 
     public Pedido(double subtotal, boolean clienteVip, boolean envioPrioritario) {
         this.subtotal = subtotal;
@@ -23,6 +26,14 @@ public class Pedido {
 
     public boolean envioPrioritario() {
         return this.envioPrioritario;
+    }
+
+    public double Calcular(){
+        double resultado=0.0;
+        //delego en resultado=this.clienteVIP.calcular(subtotal);
+        return resultado;
+
+
     }
 
     public double totalDescuestoPrioritario(){
