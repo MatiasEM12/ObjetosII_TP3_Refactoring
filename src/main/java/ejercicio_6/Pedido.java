@@ -4,13 +4,13 @@ package ejercicio_6;
 public class Pedido {
 
     private double subtotal;
-    private boolean clienteVip;//por instancia
-    private boolean envioPrioritario;//por instancia
+    private ClienteVip clienteVip;
+    private EnvioPrioritario envioPrioritario;
     public static final double DESCUENTO_VIP = 0.15;
     public static final double DESCUENTO_PRIORITARIO = 0.05;
 
 
-    public Pedido(double subtotal, boolean clienteVip, boolean envioPrioritario) {
+    public Pedido(double subtotal, ClienteVip clienteVip, EnvioPrioritario envioPrioritario) {
         this.subtotal = subtotal;
         this.clienteVip = clienteVip;
         this.envioPrioritario = envioPrioritario;
@@ -20,11 +20,11 @@ public class Pedido {
         return this.subtotal;
     }
 
-    public boolean clienteVip() {
+    public ClienteVip clienteVip() {
         return this.clienteVip;
     }
 
-    public boolean envioPrioritario() {
+    public EnvioPrioritario envioPrioritario() {
         return this.envioPrioritario;
     }
 
@@ -37,20 +37,12 @@ public class Pedido {
     }
 
     public double totalDescuestoPrioritario(){
-        double total=0;
-        if(this.envioPrioritario) {
-            Calculadora calculadoraPrioritario = new CalculadoraPrioritario();
-            total = calculadoraPrioritario.calcularTotalConDescuento(this);
-        }
-        return total;
+
+        return this.envioPrioritario.calcularTotalConDescuento(this.subtotal);
     }
 
     public double totalDescuentoVIP(){
-        double total=0;
-        if(this.clienteVip) {
-            Calculadora calculadoraVip = new CalculadoraVip();
-            total = calculadoraVip.calcularTotalConDescuento(this);
-        }
-        return total;
+
+        return this.clienteVip.calcularTotalConDescuento(this.subtotal);
     }
 }

@@ -26,11 +26,11 @@ public class CalculadorTest {
     }
 
     private List<Evento> cargarEventos() {
-        return List.of(new EventoComedia("Escuela de Rock",ValorEvento.COMEDIA),
-                new EventoDrama("Hamlet",ValorEvento.DRAMA),
-                new EventoDrama("El Avion",ValorEvento.COMEDIA),
-                new EventoComedia("Cantando en la playa",ValorEvento.COMEDIA),
-                new EventoDrama("El Perfume",ValorEvento.DRAMA)
+        return List.of(new EventoComedia("Escuela de Rock", "Comedia"),
+                new EventoDrama("Hamlet", "Drama"),
+                new EventoDrama("El Avion", "Dram"),
+                new EventoComedia("Cantando en la playa", "Comedia"),
+                new EventoDrama("El Perfume", "Drama")
         );
     }
 

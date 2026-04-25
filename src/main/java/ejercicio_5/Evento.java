@@ -5,10 +5,10 @@ package ejercicio_5;
 public abstract class  Evento {
 
     protected ValorEvento valorEvento;
-    protected TiposDeEventos tipoEvento;
+    protected String  tipoEvento;
     protected String nombreEvento;
 
-    public Evento(String nombreEvento, ValorEvento valorEvento, TiposDeEventos tipoEvento) {
+    public Evento(String nombreEvento, ValorEvento valorEvento, String tipoEvento) {
         this.nombreEvento=nombreEvento;
         this.tipoEvento = tipoEvento;
         this.valorEvento = valorEvento;
@@ -28,7 +28,7 @@ public abstract class  Evento {
     }
 
     public String tipo() {
-        return tipoEvento.getTipo();
+        return tipoEvento;
     }
 
 }

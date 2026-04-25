@@ -2,9 +2,9 @@ package ejercicio_5;
 
 public class EventoComedia extends Evento{
 
-    public EventoComedia(String nombreEvento,ValorEvento valorEvento) {
+    public EventoComedia(String nombreEvento,String tipo) {
 
-       super(nombreEvento,valorEvento, TiposDeEventos.COMEDIA);
+       super(nombreEvento,ValorEvento.COMEDIA,tipo);
     }
 
     @Override
@@ -24,7 +24,7 @@ public class EventoComedia extends Evento{
     @Override
     public float calcularExtraComedia(int numberoEspectadores) {
         validarEspectadores(numberoEspectadores);
-        return (float) Math.floor(numberoEspectadores / 5);
+        return (float) Math.floor(numberoEspectadores / Calculador.DIVISOR_EXTRA_COMEDIA);
     }
 
 

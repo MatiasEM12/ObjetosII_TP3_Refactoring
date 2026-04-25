@@ -2,6 +2,8 @@ package ejercicio_5;
 
 
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Calculador {
@@ -14,6 +16,7 @@ public class Calculador {
     public static final int MULTIPLICADOR_DRAMA = 1000;
 
     public static final int  DIVISOR_EXTRA_COMEDIA=5;
+
 
     public String reporte(Factura factura, List<Evento> eventos) {
 
@@ -32,6 +35,7 @@ public class Calculador {
                     .filter(e -> e.nombreEvento().equals(actuacion.nombreEvento()))
                     .findFirst()
                     .orElseThrow(() -> new RuntimeException("Evento no encontrado"));
+
 
 
             monto=evento.calcularMontoPorCalculador(actuacion.numberoEspectadores());

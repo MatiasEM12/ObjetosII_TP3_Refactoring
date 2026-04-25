@@ -4,7 +4,7 @@ package ejercicio_6;
 
 public class MainCalculadoraPedido {
     public static void main(String[] args) {
-        Pedido pedido = new Pedido(10000, true, true);
+        Pedido pedido = new Pedido(10000, new ClienteVip(), new EnvioPrioritario());
 
 
 

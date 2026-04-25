@@ -3,8 +3,8 @@ package ejercicio_5;
 public class EventoDrama extends Evento{
 
 
-    public EventoDrama(String nombreEvento,ValorEvento valorEvento) {
-        super(nombreEvento,valorEvento, TiposDeEventos.DRAMA);
+    public EventoDrama(String nombreEvento,String tipo) {
+        super(nombreEvento,ValorEvento.DRAMA, tipo);
     }
 
     @Override
