@@ -7,15 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Calculador {
-    public static final int LIMITE_BASE_ESPECTADORES_COMEDIA= 20;
-    public static final int SUMAR_COMEDIA = 500;
-    public static final int MULTIPLICADOR_SUPERIOR_COMEDIA = 10000;
-    public static final int MULTIPLICADOR_INFERIOR_COMEDIA= 300;
-
-    public static final int LIMITE_BASE_ESPECTADORES_DRAMA = 30;
-    public static final int MULTIPLICADOR_DRAMA = 1000;
-
-    public static final int  DIVISOR_EXTRA_COMEDIA=5;
 
 
     public String reporte(Factura factura, List<Evento> eventos) {
@@ -38,12 +29,12 @@ public class Calculador {
 
 
 
-            monto=evento.calcularMontoPorCalculador(actuacion.numberoEspectadores());
+            monto=evento.calcularMontoPorCalculador(actuacion.numeroEspectadores());
 
             // creditos a ganar
-            creditos = calcularCreditos(actuacion, creditos);
+            creditos = actuacion.calcularCreditos(creditos);
 
-            creditos += evento.calcularExtraComedia(actuacion.numberoEspectadores());
+            creditos += evento.calcularExtraComedia(actuacion.numeroEspectadores());
 
             result = stringActuacion(actuacion, result, monto);
             totalAmount += monto;
@@ -61,14 +52,10 @@ public class Calculador {
     }
 
     private static String stringActuacion(Actuacion actuacion, String result, float monto) {
-        result += actuacion.nombreEvento() + ": " + monto + ". Asientos: " + actuacion.numberoEspectadores() + System.lineSeparator();//` ${play.name}: ${format(thisAmount/100)} (${perf.audience} seats)\n`;
+        result += actuacion.nombreEvento() + ": " + monto + ". Asientos: " + actuacion.numeroEspectadores() + System.lineSeparator();//` ${play.name}: ${format(thisAmount/100)} (${perf.audience} seats)\n`;
         return result;
     }
 
-    private static float calcularCreditos(Actuacion actuacion, float creditos) {
-        creditos += Math.max(actuacion.numberoEspectadores() - 30, 0);
-        return creditos;
-    }
 
     private void validarEventos(List<Evento> eventos) {
         if (eventos.isEmpty()) {;

@@ -14,9 +14,9 @@ public abstract class  Evento {
         this.valorEvento = valorEvento;
     }
 
-    public abstract float  calcularMontoPorCalculador(int numberoEspectadores);
+    public abstract float  calcularMontoPorCalculador(int numeroEspectadores);
 
-    public abstract float calcularExtraComedia(int numberoEspectadores);
+    public abstract float calcularExtraComedia(int numeroEspectadores);
 
 
     public String nombreEvento(){

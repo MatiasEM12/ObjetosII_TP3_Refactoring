@@ -14,11 +14,11 @@ public class Main {
     }
 
     private static List<Evento> cargarEventos() {
-        return List.of(new EventoComedia("Escuela de Rock", "Comedia"),
-                new EventoDrama("Hamlet", "Drama"),
-                new EventoDrama("El Avion", "Dram"),
-                new EventoComedia("Cantando en la playa", "Comedia"),
-                new EventoDrama("El Perfume", "Drama")
+        return List.of(new Comedia("Escuela de Rock", "Comedia"),
+                new Drama("Hamlet", "Drama"),
+                new Drama("El Avion", "Dram"),
+                new Comedia("Cantando en la playa", "Comedia"),
+                new Drama("El Perfume", "Drama")
         );
     }
     private static Factura crearFactura() {
