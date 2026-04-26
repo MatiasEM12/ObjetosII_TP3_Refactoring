@@ -6,7 +6,7 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LectorCSV {
+public class LectorCSV implements Lector {
 
     private String filePath;
 
@@ -14,7 +14,8 @@ public class LectorCSV {
         this.filePath = csvPath;
     }
 
-    public List<String[]> leerCVS(){
+    @Override
+    public List<String[]> leer(){
        try {
            List<String[]> csvData = new ArrayList<String[]>();
            CSVReader reader = new CSVReader(new FileReader(this.filePath));

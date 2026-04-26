@@ -38,8 +38,8 @@ public class Recaudacion {
     List<String[]> csvData;
 
 
-    public Recaudacion(LectorCSV lector) {
-        this.csvData=lector.leerCVS();
+    public Recaudacion(Lector lector) {
+        this.csvData=lector.leer();
     }
     public List<Map<String, String>> where(Map<String, String> options)
             throws IOException {
