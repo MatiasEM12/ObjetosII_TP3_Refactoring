@@ -1,4 +1,4 @@
-package Ejercicio_3_Bien;
+package Ejercicio_3;
 
 
 

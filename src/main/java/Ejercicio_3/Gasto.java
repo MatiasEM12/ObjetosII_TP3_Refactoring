@@ -1,4 +1,4 @@
-package Ejercicio_3_Bien;
+package Ejercicio_3;
 
 public abstract class   Gasto {
 
@@ -15,12 +15,12 @@ public abstract class   Gasto {
         this.descripcion=descripcion;
     }
 
-    int sumateA(int sumate) {
-
+    int sumateA(int sumate) throws IllegalArgumentException {
+        validarSumate(sumate);
         return sumate + this.monto;
     }
 
-    public abstract int sumarComida(int sumate);
+    public abstract int sumarComida(int sumate) throws IllegalArgumentException;
 
     public abstract boolean esExcesoPorReporteGasto() ;
 
@@ -39,5 +39,9 @@ public abstract class   Gasto {
     private void validarDescripcion(String descripcion) throws IllegalArgumentException {
         if(descripcion == null) throw new IllegalArgumentException("La descripcion no puede ser null");
         if(descripcion.isEmpty()) throw new IllegalArgumentException("La descripcion no puede ser vacia");
+    }
+
+    private void validarSumate( int sumate) throws IllegalArgumentException {
+        if(sumate < 0) throw new IllegalArgumentException("El sumate no puede ser negativo");
     }
 }

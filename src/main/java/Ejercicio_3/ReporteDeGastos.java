@@ -1,4 +1,4 @@
-package Ejercicio_3_Bien;
+package Ejercicio_3;
 
 
 
@@ -8,8 +8,8 @@ import java.util.List;
 
 public class ReporteDeGastos implements Reporte {
 
-    public static final int LIMITE_CENA = 5000;
-    public static final int LIMITE_DESAYUNO = 1000;
+
+
     private int total;
     private int gastosDeComida;
     ArrayList<String> reporte;
@@ -19,7 +19,8 @@ public class ReporteDeGastos implements Reporte {
 
 
     @Override
-    public ArrayList<String>  generarReporte(List<Gasto> gastos) {
+    public ArrayList<String>  generarReporte(List<Gasto> gastos) throws IllegalArgumentException {
+        validarListGastos(gastos);
         this.total = 0;
         this.gastosDeComida = 0;
 
@@ -29,16 +30,12 @@ public class ReporteDeGastos implements Reporte {
         return reporte;
     }
 
-    private void cargarReporte(List<Gasto> gastos) {
+    private void cargarReporte(List<Gasto> gastos) throws IllegalArgumentException {
+        validarListGastos(gastos);
         for (Gasto gasto : gastos) {
 
             gastosDeComida=gasto.sumarComida(gastosDeComida);
-
-
-
             String marcaExcesoComidas = gasto.esExcesoPorReporteGasto() ? "X" : " ";
-
-
             cargarStringReporte(gasto, marcaExcesoComidas);
             total=gasto.sumateA(total);
         }
@@ -52,7 +49,10 @@ public class ReporteDeGastos implements Reporte {
     private void cargarStringReporte(Gasto gasto, String marcaExcesoComidas) {
         reporte.add(gasto.descripcion() + "\t" + gasto.monto() + "\t" + marcaExcesoComidas);
 
+    }
 
+    private void validarListGastos(List<Gasto> gastos) throws IllegalArgumentException {
+        if(gastos == null) throw new IllegalArgumentException("La lista de gastos no puede ser nula");
     }
 
 }

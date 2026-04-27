@@ -1,10 +1,10 @@
 package ejercicio_3;
 
-import Ejercicio_3_Bien.GastoAlquilerDeAuto;
-import Ejercicio_3_Bien.GastoCena;
-import Ejercicio_3_Bien.GastoDesayuno;
+import Ejercicio_3.GastoAlquilerDeAuto;
+import Ejercicio_3.GastoCena;
+import Ejercicio_3.GastoDesayuno;
 
-import Ejercicio_3_Bien.ReporteDeGastos;
+import Ejercicio_3.ReporteDeGastos;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
