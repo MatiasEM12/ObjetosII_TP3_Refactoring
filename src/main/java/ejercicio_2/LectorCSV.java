@@ -10,7 +10,8 @@ public class LectorCSV implements Lector {
 
     private String filePath;
 
-    public LectorCSV(String csvPath) {
+    public LectorCSV(String csvPath) throws IllegalArgumentException {
+        validarPath(csvPath);
         this.filePath = csvPath;
     }
 
@@ -32,5 +33,11 @@ public class LectorCSV implements Lector {
            throw new RuntimeException("Error al leer el archivo CSV: " + e.getMessage());
 
        }
+    }
+
+    private void validarPath(String path) throws IllegalArgumentException {
+        if (path == null || path.isEmpty()) {
+            throw new IllegalArgumentException("El path del archivo CSV no puede ser nulo o vacío.");
+        }
     }
 }

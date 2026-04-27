@@ -38,7 +38,8 @@ public class Recaudacion {
     List<String[]> csvData;
 
 
-    public Recaudacion(Lector lector) {
+    public Recaudacion(Lector lector) throws IOException {
+        validarLector(lector);
         this.csvData=lector.leer();
     }
     public List<Map<String, String>> where(Map<String, String> options)
@@ -55,7 +56,7 @@ public class Recaudacion {
         return mapearResultado();
     }
 
-    private List<Map<String, String>> mapearResultado() {
+    private List<Map<String, String>> mapearResultado() throws IOException {
         List<Map<String, String>> output = new ArrayList<Map<String, String>>();
 
         csvData.forEach(csvDatum -> {
@@ -75,13 +76,40 @@ public class Recaudacion {
         return output;
     }
 
-    private void filtrarPor(Map<String, String> options, String nombreColumna, int indice) {
+    private void filtrarPor(Map<String, String> options, String nombreColumna, int indice) throws IOException {
+        validarMap(options);
+        validarNombrecColumna(nombreColumna);
+        validarIndice(indice);
         if (options.containsKey(nombreColumna)) {
             List<String[]> results = csvData.stream()
                     .filter(csvDatum -> csvDatum[indice].equals(options.get(nombreColumna)))
                     .collect(Collectors.toList());
 
             csvData = results;
+        }
+    }
+
+    private void validarLector(Lector lector) throws IllegalArgumentException{
+        if(lector == null){
+            throw new IllegalArgumentException("El lector no puede ser nulo");
+        }
+    }
+
+    private void validarMap(Map<String, String> options) throws IllegalArgumentException{
+        if(options == null){
+            throw new IllegalArgumentException("La map de opciones no puede ser nula");
+        }
+    }
+
+    private void validarNombrecColumna(String nombreColumna) throws IllegalArgumentException{
+        if(nombreColumna == null || nombreColumna.isEmpty()){
+            throw new IllegalArgumentException("El nombre de la columna no puede ser nulo o vacio");
+        }
+    }
+
+    private void validarIndice(int indice){
+        if(indice < 0){
+            throw new IllegalArgumentException("El indice no puede ser negativo");
         }
     }
 
