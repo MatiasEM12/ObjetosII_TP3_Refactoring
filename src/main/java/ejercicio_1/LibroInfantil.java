@@ -3,6 +3,10 @@ package ejercicio_1;
 public class LibroInfantil extends Libro{
 
 
+    public static final int COMPARADOR_DIAS_PRECIO =3;
+    public static final int RESTA_PRECIO = 3;
+    public static final double MULTIPLICADOR_PRECIO = 1.5;
+    public static final double MONTO_BASICO = 1.5;
 
     public LibroInfantil(String nombre) throws IllegalArgumentException {
         super(nombre, CodigoPrecio.INFANTILES);
@@ -11,9 +15,9 @@ public class LibroInfantil extends Libro{
     @Override
     public double calcularPrecio(int diasAlquilados) throws IllegalArgumentException {
         validarDiasAlguilados(diasAlquilados);
-        double precio=Cliente.MONTO_BASICO_INFANTIL;
-        if (diasAlquilados > Cliente.DIAS_INFANTILES){
-            precio += (diasAlquilados - Cliente.DIAS_INFANTILES) * Cliente.MULTIPLICADOR_INFANTIL;
+        double precio= MONTO_BASICO;
+        if (diasAlquilados > COMPARADOR_DIAS_PRECIO){
+            precio += (diasAlquilados - RESTA_PRECIO) * MULTIPLICADOR_PRECIO;
         }
         return precio;
     }

@@ -3,6 +3,8 @@ package ejercicio_1;
 public class LibroNuevo extends Libro{
 
 
+    public static final int MULTIPLICADOR_PRECIO = 3;
+    public static final int COMPARADOR_DIA_BONUS = 1;
 
     public LibroNuevo(String nombre) throws IllegalArgumentException {
         super(nombre, CodigoPrecio.NUEVO_LANZAMIENTO);
@@ -12,14 +14,14 @@ public class LibroNuevo extends Libro{
     public double calcularPrecio(int diasAlquilados) throws IllegalArgumentException{
         validarDiasAlguilados(diasAlquilados);
 
-        return  diasAlquilados * Cliente.MULTIPLICADOR_NUEVO_LANZAMIENTO;
+        return  diasAlquilados * MULTIPLICADOR_PRECIO;
     }
 
     @Override
     public int bonus(int diasAlquilados)  throws IllegalArgumentException{
         validarDiasAlguilados(diasAlquilados);
-        if(diasAlquilados > Cliente.DIAS_NUEVO_LANZAMIENTO){
-            return 1;
+        if(diasAlquilados > COMPARADOR_DIA_BONUS){
+            return COMPARADOR_DIA_BONUS;
         }
         return 0;
     }

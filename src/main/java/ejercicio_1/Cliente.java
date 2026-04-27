@@ -7,20 +7,6 @@ import java.util.List;
 
 public class Cliente {
 
-    public static  final int MONTO_BASICO_REGULAR=2;
-    public static  final double MONTO_BASICO_INFANTIL=1.5;
-
-
-    public static  final double MULTIPLICADOR_REGULAR=1.5;
-    public static  final int MULTIPLICADOR_NUEVO_LANZAMIENTO=3;
-    public static  final double MULTIPLICADOR_INFANTIL=1.5;
-
-    public static final int DIAS_INFANTILES=3;
-    public static final int DIAS_NUEVO_LANZAMIENTO=1;
-    public static final int DIAS_REGULAR=2;
-
-
-
 
     private List<Alquiler> alquileres = new ArrayList<Alquiler>();
     private String name;
