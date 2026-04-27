@@ -20,7 +20,9 @@ public class PersonaRepository {
     /**
      * Busca por nombre a parte
      */
-    public List<Persona> buscarPorNombre(String nombreOParte) {
+    public List<Persona> buscarPorNombre(String nombreOParte) throws IllegalArgumentException {
+
+        validacionNombreOParte(nombreOParte);
         return jdbi.withHandle(handle -> {
             var rs = handle
                     .select("select nombre, apellido from persona where nombre like ?")
@@ -28,9 +30,6 @@ public class PersonaRepository {
 
             var personas = new ArrayList<Persona>();
 
-          /*  if (rs.size() == 0) {
-                return null;
-            }*/  //devuelvo la lista vacia
 
             for (Map<String, String> map : rs) {
                 personas.add(new Persona(map.get("nombre"), map.get("apellido")));
@@ -47,7 +46,9 @@ public class PersonaRepository {
      * - null si el id no se encuentra en la BD
      * - la instancia de Persona encontrada
      */
-    public Optional<Persona> buscarId(Long id) {
+    public Optional<Persona> buscarId(Long id) throws IllegalArgumentException {
+
+        validacionId(id);
         return jdbi.withHandle(handle -> {
 
             var rs = handle
@@ -63,4 +64,15 @@ public class PersonaRepository {
         });
     }
 
+    private void validacionId( Long id) throws IllegalArgumentException {
+        if (id == null || id <= 0) {
+            throw new IllegalArgumentException("El id debe ser un número positivo");
+        }
+    }
+
+    private void validacionNombreOParte( String nombreOParte) throws IllegalArgumentException {
+        if(nombreOParte == null || nombreOParte.isBlank()){
+            throw new IllegalArgumentException("El nombre o parte del nombre no puede ser nulo o vacío");
+        }
+    }
 }
