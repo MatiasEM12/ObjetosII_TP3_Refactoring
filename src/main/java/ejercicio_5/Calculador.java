@@ -9,7 +9,7 @@ import java.util.List;
 public class Calculador {
 
 
-    public String reporte(Factura factura, List<Evento> eventos) {
+    public String reporte(Factura factura, List<Evento> eventos) throws IllegalArgumentException {
 
         validadFactura(factura);
         validarEventos(eventos);
@@ -57,16 +57,16 @@ public class Calculador {
     }
 
 
-    private void validarEventos(List<Evento> eventos) {
+    private void validarEventos(List<Evento> eventos) throws  IllegalArgumentException{
         if (eventos.isEmpty()) {;
-            throw new RuntimeException("No hay eventos disponibles");
+            throw new IllegalArgumentException("No hay eventos disponibles");
         }
 
     }
 
-    private void validadFactura(Factura factura) {
+    private void validadFactura(Factura factura) throws IllegalArgumentException {
         if (factura == null) {
-            throw new RuntimeException("Factura no puede ser nula");
+            throw new IllegalArgumentException("Factura no puede ser nula");
         }
     }
 }
