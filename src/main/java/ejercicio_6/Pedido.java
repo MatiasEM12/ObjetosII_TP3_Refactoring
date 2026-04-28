@@ -1,16 +1,18 @@
 package ejercicio_6;
 
 
+
 public class Pedido {
 
     private double subtotal;
     private ClienteVip clienteVip;
     private EnvioPrioritario envioPrioritario;
-    public static final double DESCUENTO_VIP = 0.15;
-    public static final double DESCUENTO_PRIORITARIO = 0.05;
 
 
-    public Pedido(double subtotal, ClienteVip clienteVip, EnvioPrioritario envioPrioritario) {
+    public Pedido(double subtotal, ClienteVip clienteVip, EnvioPrioritario envioPrioritario) throws IllegalArgumentException {
+        validacionSubTotal(subtotal);
+        validacionClienteVip(clienteVip);
+        validacionEnvioPrioritario(envioPrioritario);
         this.subtotal = subtotal;
         this.clienteVip = clienteVip;
         this.envioPrioritario = envioPrioritario;
@@ -28,13 +30,6 @@ public class Pedido {
         return this.envioPrioritario;
     }
 
-    public double Calcular(){
-        double resultado=0.0;
-        //delego en resultado=this.clienteVIP.calcular(subtotal);
-        return resultado;
-
-
-    }
 
     public double totalDescuestoPrioritario(){
 
@@ -44,5 +39,23 @@ public class Pedido {
     public double totalDescuentoVIP(){
 
         return this.clienteVip.calcularTotalConDescuento(this.subtotal);
+    }
+
+    private void validacionSubTotal(double subtotal) throws IllegalArgumentException{
+        if(subtotal < 0){
+            throw new IllegalArgumentException("El subtotal no puede ser negativo");
+        }
+    }
+
+    private void validacionClienteVip(ClienteVip vip) throws IllegalArgumentException{
+        if(vip == null){
+            throw new IllegalArgumentException("El cliente VIP no puede ser nulo");
+        }
+    }
+
+    private void validacionEnvioPrioritario(EnvioPrioritario envio) throws IllegalArgumentException{
+        if(envio == null){
+            throw new IllegalArgumentException("El envío prioritario no puede ser nulo");
+        }
     }
 }
